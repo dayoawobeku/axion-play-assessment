@@ -1,5 +1,6 @@
 import {Metadata, ResolvingMetadata} from 'next';
 import {promises as fs} from 'fs';
+import path from 'path';
 import {
   Box,
   Button,
@@ -17,18 +18,14 @@ import Carousel from '@/components/carousel';
 
 export const revalidate = 0;
 
-const hostedUrl = process.env.NEXT_PUBLIC_HOSTED_URL || 'http://localhost:3000';
-
 export async function generateMetadata(
   {params}: {params: {id: string}},
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const id = params.id;
 
-  const file = await fs.readFile(
-    process.cwd() + '/src/app/products.json',
-    'utf8',
-  );
+  const filePath = path.join(process.cwd(), 'public', 'products.json');
+  const file = await fs.readFile(filePath, 'utf8');
   const data: Product[] = JSON.parse(file);
 
   const product = data.find(
@@ -56,10 +53,8 @@ export async function generateMetadata(
 }
 
 export default async function Products({params}: {params: {id: number}}) {
-  const file = await fs.readFile(
-    process.cwd() + '/src/app/products.json',
-    'utf8',
-  );
+  const filePath = path.join(process.cwd(), 'public', 'products.json');
+  const file = await fs.readFile(filePath, 'utf8');
   const data: Product[] = JSON.parse(file);
 
   const product = data.find(
