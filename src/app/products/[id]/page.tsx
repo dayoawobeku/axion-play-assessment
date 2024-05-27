@@ -1,6 +1,5 @@
-import { Metadata, ResolvingMetadata } from "next";
-import Image from "next/image";
-import { promises as fs } from "fs";
+import {Metadata, ResolvingMetadata} from 'next';
+import {promises as fs} from 'fs';
 import {
   Box,
   Button,
@@ -11,24 +10,24 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-} from "@chakra-ui/react";
-import Nav from "@/components/nav";
-import { Product } from "@/types";
-import Carousel from "@/components/carousel";
+} from '@chakra-ui/react';
+import Nav from '@/components/nav';
+import {Product} from '@/types';
+import Carousel from '@/components/carousel';
 
-const hostedUrl = process.env.NEXT_PUBLIC_HOSTED_URL || "http://localhost:3000";
+const hostedUrl = process.env.NEXT_PUBLIC_HOSTED_URL || 'http://localhost:3000';
 
 export async function generateMetadata(
-  { params }: { params: { id: string } },
-  parent: ResolvingMetadata
+  {params}: {params: {id: string}},
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const id = params.id;
 
-  const file = await fs.readFile(process.cwd() + "/src/products.json", "utf8");
+  const file = await fs.readFile(process.cwd() + '/src/products.json', 'utf8');
   const data: Product[] = JSON.parse(file);
 
   const product = data.find(
-    (product) => Number(product.id) === Number(params.id)
+    product => Number(product.id) === Number(params.id),
   );
 
   // optionally access and extend (rather than replace) parent metadata
@@ -38,7 +37,7 @@ export async function generateMetadata(
     title: `${product?.title} - $${product?.price.toFixed(2)}`,
     description: `${product?.title} - $${product?.price.toFixed(2)}`,
     openGraph: {
-      images: [product?.images[0] || "", ...previousImages],
+      images: [product?.images[0] || '', ...previousImages],
       title: `${product?.title} - $${product?.price.toFixed(2)}`,
       description: `${product?.title} - $${product?.price.toFixed(2)}`,
       url: `${hostedUrl}/products/${id}`,
@@ -46,17 +45,17 @@ export async function generateMetadata(
     twitter: {
       title: `${product?.title} - $${product?.price.toFixed(2)}`,
       description: `${product?.title} - $${product?.price.toFixed(2)}`,
-      images: product ? [{ url: product.images[0] }] : [],
+      images: product ? [{url: product.images[0]}] : [],
     },
   };
 }
 
-export default async function Products({ params }: { params: { id: number } }) {
-  const file = await fs.readFile(process.cwd() + "/src/products.json", "utf8");
+export default async function Products({params}: {params: {id: number}}) {
+  const file = await fs.readFile(process.cwd() + '/src/products.json', 'utf8');
   const data: Product[] = JSON.parse(file);
 
   const product = data.find(
-    (product) => Number(product.id) === Number(params.id)
+    product => Number(product.id) === Number(params.id),
   );
 
   return (
@@ -67,21 +66,9 @@ export default async function Products({ params }: { params: { id: number } }) {
         basis="100%"
         gap="40px"
         justifyContent="space-between"
+        flexDirection={{base: 'column', md: 'row'}}
       >
-        <Flex
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          gap="1.5rem"
-          basis="50%"
-        >
-          {product &&
-            product.images.map((image) => (
-              <Box key={image} width="100%" height="500px" position="relative">
-                <Image src={image} alt="A pair of shoes" fill />
-              </Box>
-            ))}
-        </Flex>
+        {product && <Carousel images={product?.images || []} />}
         <Flex
           basis="50%"
           flexDirection="column"
@@ -101,15 +88,15 @@ export default async function Products({ params }: { params: { id: number } }) {
             <Button
               width="100%"
               height="48px"
-              textTransform={"uppercase"}
-              rounded={"full"}
-              bg={"black"}
-              color={"white"}
+              textTransform={'uppercase'}
+              rounded={'full'}
+              bg={'black'}
+              color={'white'}
               _hover={{
-                bg: "gray.800",
+                bg: 'gray.800',
               }}
               _focus={{
-                bg: "gray.800",
+                bg: 'gray.800',
               }}
               fontWeight="400"
             >
@@ -131,10 +118,10 @@ export default async function Products({ params }: { params: { id: number } }) {
                 pb={4}
                 paddingInline="0px"
                 _before={{
-                  borderColor: "#000",
+                  borderColor: '#000',
                 }}
                 _after={{
-                  borderColor: "#000",
+                  borderColor: '#000',
                 }}
               >
                 {product?.description}
@@ -146,14 +133,14 @@ export default async function Products({ params }: { params: { id: number } }) {
               product?.title
             }-$${product?.price.toFixed(2)}.`}
             style={{
-              color: "white",
-              fontWeight: "500",
-              marginTop: "16px",
-              textTransform: "uppercase",
-              width: "fit-content",
-              backgroundColor: "#25D366",
-              padding: "12px 24px",
-              borderRadius: "9999px",
+              color: 'white',
+              fontWeight: '500',
+              marginTop: '16px',
+              textTransform: 'uppercase',
+              width: 'fit-content',
+              backgroundColor: '#25D366',
+              padding: '12px 24px',
+              borderRadius: '9999px',
             }}
             target="_blank"
             rel="noreferrer"

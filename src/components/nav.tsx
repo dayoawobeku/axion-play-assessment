@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Link } from "@chakra-ui/next-js";
-import { Flex } from "@chakra-ui/react";
+import {Link} from '@chakra-ui/next-js';
+import {Flex} from '@chakra-ui/react';
 
 export default function Nav() {
   return (
@@ -14,11 +14,11 @@ export default function Nav() {
       <Link href="/" fontSize="1.375rem">
         Home
       </Link>
-      <Flex gap="2.5rem" color="#535661">
-        <Link href="/search">Search</Link>
-        <Link href="/help">Help</Link>
-        <Link href="/account">Account</Link>
-        <Link href="/bag">Bag (0)</Link>
+      <Flex gap={{base: '1rem', md: '2.5rem'}} color="#535661">
+        <Link href="/">Search</Link>
+        <Link href="/">Help</Link>
+        <Link href="/">Account</Link>
+        <Link href="/">Bag (0)</Link>
       </Flex>
     </Flex>
   );

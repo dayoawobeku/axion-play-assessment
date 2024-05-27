@@ -1,13 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
-import { promises as fs } from "fs";
-import { Product } from "@/types";
-import Nav from "@/components/nav";
-import ProductCatalogue from "@/components/product-catalogue";
+import Image from 'next/image';
+import Link from 'next/link';
+import {Box, Flex, Grid, GridItem} from '@chakra-ui/react';
+import {promises as fs} from 'fs';
+import {Product} from '@/types';
+import Nav from '@/components/nav';
+import ProductCatalogue from '@/components/product-catalogue';
 
 export default async function Home() {
-  const file = await fs.readFile(process.cwd() + "/src/products.json", "utf8");
+  const file = await fs.readFile(process.cwd() + '/src/products.json', 'utf8');
   const data: Product[] = JSON.parse(file);
 
   const newCollections = data.slice(0, 3);
@@ -18,7 +18,11 @@ export default async function Home() {
     <>
       <Nav />
 
-      <Flex marginTop="64px" justifyContent="space-between">
+      <Flex
+        marginTop="64px"
+        flexDirection={{base: 'column', md: 'row'}}
+        justifyContent="space-between"
+      >
         <Box as="p" textTransform="uppercase" fontSize="0.875rem">
           Shop From Our NEW Collections
         </Box>
@@ -32,16 +36,20 @@ export default async function Home() {
         </Box>
       </Flex>
 
-      <Grid marginTop="16px" gap="1.5rem" templateColumns="repeat(3, 1fr)">
-        {newCollections.map((product) => (
+      <Grid
+        marginTop="16px"
+        gap="1.5rem"
+        templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)'}}
+      >
+        {newCollections.map(product => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <GridItem
               flexDirection="column"
               gap="1.5rem"
               _hover={{
-                ".product-image": {
-                  transform: "scale(1.05)",
-                  transition: "transform 0.2s ease-in-out",
+                '.product-image': {
+                  transform: 'scale(1.05)',
+                  transition: 'transform 0.2s ease-in-out',
                 },
               }}
             >
@@ -68,7 +76,11 @@ export default async function Home() {
         ))}
       </Grid>
 
-      <Flex marginTop="72px" justifyContent="space-between">
+      <Flex
+        marginTop="72px"
+        flexDirection={{base: 'column', md: 'row'}}
+        justifyContent="space-between"
+      >
         <Box as="p" textTransform="uppercase" fontSize="0.875rem">
           Top Deals
         </Box>
@@ -82,16 +94,20 @@ export default async function Home() {
         </Box>
       </Flex>
 
-      <Grid marginTop="16px" gap="1.5rem" templateColumns="repeat(4, 1fr)">
-        {topDeals.map((product) => (
+      <Grid
+        marginTop="16px"
+        gap="1.5rem"
+        templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(4, 1fr)'}}
+      >
+        {topDeals.map(product => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <GridItem
               flexDirection="column"
               gap="1.5rem"
               _hover={{
-                ".product-image": {
-                  transform: "scale(1.05)",
-                  transition: "transform 0.2s ease-in-out",
+                '.product-image': {
+                  transform: 'scale(1.05)',
+                  transition: 'transform 0.2s ease-in-out',
                 },
               }}
             >
@@ -107,8 +123,8 @@ export default async function Home() {
                   {product.title}
                 </Box>
                 <Box as="p" fontSize="1rem" color="#535661" noOfLines={2}>
-                  {product.description === "Not available"
-                    ? "-"
+                  {product.description === 'Not available'
+                    ? '-'
                     : product.description}
                 </Box>
                 <Box as="p" fontSize="1.25rem" fontWeight="600">
@@ -120,7 +136,11 @@ export default async function Home() {
         ))}
       </Grid>
 
-      <Flex marginTop="72px" justifyContent="space-between">
+      <Flex
+        marginTop="72px"
+        flexDirection={{base: 'column', md: 'row'}}
+        justifyContent="space-between"
+      >
         <Box as="p" textTransform="uppercase" fontSize="0.875rem">
           Best sellers
         </Box>
@@ -134,16 +154,20 @@ export default async function Home() {
         </Box>
       </Flex>
 
-      <Grid marginTop="16px" gap="1.5rem" templateColumns="repeat(2, 1fr)">
-        {bestSellers.map((product) => (
+      <Grid
+        marginTop="16px"
+        gap="1.5rem"
+        templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)'}}
+      >
+        {bestSellers.map(product => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <GridItem
               flexDirection="column"
               gap="1.5rem"
               _hover={{
-                ".product-image": {
-                  transform: "scale(1.05)",
-                  transition: "transform 0.2s ease-in-out",
+                '.product-image': {
+                  transform: 'scale(1.05)',
+                  transition: 'transform 0.2s ease-in-out',
                 },
               }}
             >
@@ -170,7 +194,11 @@ export default async function Home() {
         ))}
       </Grid>
 
-      <Flex marginTop="72px" justifyContent="space-between">
+      <Flex
+        flexDirection={{base: 'column', md: 'row'}}
+        marginTop="72px"
+        justifyContent="space-between"
+      >
         <Box as="p" textTransform="uppercase" fontSize="0.875rem">
           BROWSE OUR CATALOGUE
         </Box>

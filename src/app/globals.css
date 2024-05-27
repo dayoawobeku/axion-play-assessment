@@ -104,3 +104,7 @@ a {
     color-scheme: dark;
   }
 }
+
+.slick-dots {
+  display: none !important;
+}

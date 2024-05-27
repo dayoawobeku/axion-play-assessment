@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
-import Slider from "react-slick";
-import Image from "next/image";
+import React from 'react';
+import {Box, IconButton, useBreakpointValue} from '@chakra-ui/react';
+import {BiLeftArrowAlt, BiRightArrowAlt} from 'react-icons/bi';
+import Slider from 'react-slick';
+import Image from 'next/image';
 
 const settings = {
   dots: true,
@@ -18,18 +18,18 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function Carousel({ images }: { images: string[] }) {
+export default function Carousel({images}: {images: string[]}) {
   const [slider, setSlider] = React.useState<Slider | null>(null);
 
-  const top = useBreakpointValue({ base: "90%", md: "50%" });
-  const side = useBreakpointValue({ base: "30%", md: "10px" });
+  const top = useBreakpointValue({base: '90%', md: '50%'});
+  const side = useBreakpointValue({base: '30%', md: '10px'});
 
   return (
     <Box
-      position={"relative"}
-      height={"300px"}
-      width={"300"}
-      overflow={"hidden"}
+      position={'relative'}
+      height={{base: '100vw', md: '600px'}}
+      width={'full'}
+      overflow={'hidden'}
     >
       <link
         rel="stylesheet"
@@ -48,7 +48,7 @@ export default function Carousel({ images }: { images: string[] }) {
         position="absolute"
         left={side}
         top={top}
-        transform={"translate(0%, -50%)"}
+        transform={'translate(0%, -50%)'}
         zIndex={2}
         onClick={() => slider?.slickPrev()}
       >
@@ -61,13 +61,13 @@ export default function Carousel({ images }: { images: string[] }) {
         position="absolute"
         right={side}
         top={top}
-        transform={"translate(0%, -50%)"}
+        transform={'translate(0%, -50%)'}
         zIndex={2}
         onClick={() => slider?.slickNext()}
       >
         <BiRightArrowAlt />
       </IconButton>
-      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+      <Slider {...settings} ref={slider => setSlider(slider)}>
         {images.map((url, index) => (
           <Image
             key={index}

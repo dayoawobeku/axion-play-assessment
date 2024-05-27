@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Grid, GridItem, Flex, Box, Button } from "@chakra-ui/react";
-import { Product } from "@/types";
+import {useState} from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import {Grid, GridItem, Flex, Box, Button} from '@chakra-ui/react';
+import {Product} from '@/types';
 
-export default function ProductCatalogue({ data }: { data: Product[] }) {
+export default function ProductCatalogue({data}: {data: Product[]}) {
   const itemsPerPage = 10;
   const initialProducts = data.slice(0, itemsPerPage);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,17 +23,21 @@ export default function ProductCatalogue({ data }: { data: Product[] }) {
 
   return (
     <>
-      <Grid marginTop="16px" gap="1.5rem" templateColumns="repeat(4, 1fr)">
-        {products.map((product) => (
+      <Grid
+        marginTop="16px"
+        gap="1.5rem"
+        templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(4, 1fr)'}}
+      >
+        {products.map(product => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <GridItem
               flexDirection="column"
               rowGap="1.5rem"
               columnGap="4.5rem"
               _hover={{
-                ".product-image": {
-                  transform: "scale(1.05)",
-                  transition: "transform 0.2s ease-in-out",
+                '.product-image': {
+                  transform: 'scale(1.05)',
+                  transition: 'transform 0.2s ease-in-out',
                 },
               }}
             >
@@ -49,8 +53,8 @@ export default function ProductCatalogue({ data }: { data: Product[] }) {
                   {product.title}
                 </Box>
                 <Box as="p" fontSize="1rem" color="#535661" noOfLines={2}>
-                  {product.description === "Not available"
-                    ? "-"
+                  {product.description === 'Not available'
+                    ? '-'
                     : product.description}
                 </Box>
                 <Box as="p" fontSize="1.25rem" fontWeight="600">
