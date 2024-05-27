@@ -16,8 +16,6 @@ import Nav from '@/components/nav';
 import {Product} from '@/types';
 import Carousel from '@/components/carousel';
 
-export const revalidate = 0;
-
 export async function generateMetadata(
   {params}: {params: {id: string}},
   parent: ResolvingMetadata,

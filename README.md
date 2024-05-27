@@ -22,3 +22,9 @@ You can start editing the page by modifying `app/page.tsx`. The page
 auto-updates as you edit the file.
 
 [View live deployment here](https://axion-play-assessment.vercel.app/)
+
+## Screenshots
+
+![alt text](/screenshots/home.png) ![alt text](/screenshots/home_mobile.png)
+![alt text](/screenshots/product.png)
+![alt text](/screenshots/product_mobile.png)
