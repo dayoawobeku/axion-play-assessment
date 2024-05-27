@@ -42,7 +42,7 @@ export async function generateMetadata(
       images: [product?.images[0] || '', ...previousImages],
       title: `${product?.title} - $${product?.price.toFixed(2)}`,
       description: `${product?.title} - $${product?.price.toFixed(2)}`,
-      url: `${hostedUrl}/products/${id}`,
+      url: `https://axion-play-assessment.vercel.app/products/${id}`,
     },
     twitter: {
       title: `${product?.title} - $${product?.price.toFixed(2)}`,
