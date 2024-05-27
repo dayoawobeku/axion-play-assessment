@@ -25,7 +25,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const id = params.id;
 
-  const file = await fs.readFile(process.cwd() + '/src/products.json', 'utf8');
+  const file = await fs.readFile(
+    process.cwd() + '/src/app/products.json',
+    'utf8',
+  );
   const data: Product[] = JSON.parse(file);
 
   const product = data.find(
@@ -53,7 +56,10 @@ export async function generateMetadata(
 }
 
 export default async function Products({params}: {params: {id: number}}) {
-  const file = await fs.readFile(process.cwd() + '/src/products.json', 'utf8');
+  const file = await fs.readFile(
+    process.cwd() + '/src/app/products.json',
+    'utf8',
+  );
   const data: Product[] = JSON.parse(file);
 
   const product = data.find(

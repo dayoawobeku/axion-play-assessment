@@ -7,7 +7,10 @@ import Nav from '@/components/nav';
 import ProductCatalogue from '@/components/product-catalogue';
 
 export default async function Home() {
-  const file = await fs.readFile(process.cwd() + '/src/products.json', 'utf8');
+  const file = await fs.readFile(
+    process.cwd() + '/src/app/products.json',
+    'utf8',
+  );
   const data: Product[] = JSON.parse(file);
 
   const newCollections = data.slice(0, 3);
