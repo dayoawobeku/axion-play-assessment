@@ -21,4 +21,8 @@ result.
 You can start editing the page by modifying `app/page.tsx`. The page
 auto-updates as you edit the file.
 
-[View live deployment here](https://nextjs.org/docs/deployment)
+[View live deployment here](https://axion-play-assessment.vercel.app/)
+
+## Screenshots
+
+![alt text](image.png) ![alt text](image-1.png)

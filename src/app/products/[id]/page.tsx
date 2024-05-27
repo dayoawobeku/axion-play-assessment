@@ -15,6 +15,8 @@ import Nav from '@/components/nav';
 import {Product} from '@/types';
 import Carousel from '@/components/carousel';
 
+export const revalidate = 0;
+
 const hostedUrl = process.env.NEXT_PUBLIC_HOSTED_URL || 'http://localhost:3000';
 
 export async function generateMetadata(
